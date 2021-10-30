@@ -19,7 +19,7 @@ public class YahooFinanceAdapter {
 
     public Optional<YahooResponse> retrieveChartInfo(String symbol) {
         HttpHeaders headers = new HttpHeaders();
-        headers.add("X-API-KEY","tYhe2Oz87z2b8eAizKV0h6CWt7hhUm3s8KahDieO");
+        headers.add("X-API-KEY","");
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
 
         HttpEntity<String> entity = new HttpEntity<>(headers);

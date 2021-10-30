@@ -2,14 +2,14 @@ package com.viking.finance.stocks.api.model;
 
 import javax.persistence.*;
 
-@Table(name = "FollowedStock")
+@Table(name = "follows")
 @Entity
 public class FollowData {
 
     @Id
     @Column
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int followId;
 
     @Column
     private String username;
@@ -18,12 +18,12 @@ public class FollowData {
     private String symbol;
 
 
-    public int getId() {
-        return id;
+    public int getFollowId() {
+        return followId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setFollowId(int id) {
+        this.followId = followId;
     }
 
     public String getUsername() {
