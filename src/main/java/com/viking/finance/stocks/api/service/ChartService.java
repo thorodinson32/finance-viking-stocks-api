@@ -6,6 +6,9 @@ import com.viking.finance.stocks.api.model.Follow;
 import com.viking.finance.stocks.api.model.Price;
 import com.viking.finance.stocks.api.model.yahoo.Chart;
 import com.viking.finance.stocks.api.model.yahoo.YahooResponse;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,20 +21,17 @@ public class ChartService {
 
     private final YahooFinanceAdapter yahooFinanceAdapter;
     private final FollowingService followingService;
-    private final ObjectMapper objectMapper;
 
     public ChartService(YahooFinanceAdapter yahooFinanceAdapter,
                         FollowingService followingService) {
         this.yahooFinanceAdapter = yahooFinanceAdapter;
         this.followingService = followingService;
-        this.objectMapper = new ObjectMapper();
     }
 
     public Chart getValueForSymbol(String symbol) {
-        Optional<YahooResponse> response = yahooFinanceAdapter.retrieveChartInfo(symbol);
+        YahooResponse response = yahooFinanceAdapter.retrieveChartInfo(symbol);
 
-        return response.get()
-                .getChart();
+        return response.getChart();
     }
 
     public List<Price> getFollowedPrices(String username) {
@@ -60,4 +60,5 @@ public class ChartService {
                 })
                 .collect(Collectors.toList());
     }
+
 }

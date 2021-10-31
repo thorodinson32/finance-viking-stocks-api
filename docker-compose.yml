@@ -13,3 +13,12 @@ services:
         - /Users/jfmorga/data/mysql:/var/lib/mysql
       ports:
         - "3306:3306"
+
+    cache:
+      container_name: viking_finance_redis
+      image: "redis"
+      ports: 
+        - "6379:6379"
+      environment:
+        - ALLOW_EMPTY_PASSWORD=yes
+        - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
