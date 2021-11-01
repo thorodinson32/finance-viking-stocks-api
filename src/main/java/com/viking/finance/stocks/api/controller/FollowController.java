@@ -2,21 +2,27 @@ package com.viking.finance.stocks.api.controller;
 
 import com.viking.finance.stocks.api.model.Follow;
 import com.viking.finance.stocks.api.service.FollowingService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-public class FollowingController {
+public class FollowController {
 
     private final FollowingService followingService;
 
-    public FollowingController(FollowingService followingService) {
+    public FollowController(FollowingService followingService) {
         this.followingService = followingService;
     }
 
-    @PostMapping(value = "/v1/follow")
+    @PostMapping("/v1/follow")
     public void followSymbol(@RequestBody Follow follow) {
         followingService.insertNewFollowedStock(follow);
     }
+
+    @GetMapping("v1/follow/{username}")
+    public List<Follow> allFollowingSymbols(@PathVariable String username) {
+        return followingService.retrieveAllFollows(username);
+    }
+
 }

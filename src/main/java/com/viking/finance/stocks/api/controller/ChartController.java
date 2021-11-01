@@ -20,12 +20,12 @@ public class ChartController {
     }
 
     @GetMapping(value = "/v1/chart/symbol/{symbol}",
-    produces = MediaType.APPLICATION_JSON_VALUE)
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public Chart stockValue(@PathVariable String symbol) {
         return priceService.getValueForSymbol(symbol);
     }
 
-    @GetMapping(value = "/v1/chart/username/{username}",
+    @GetMapping(value = "/v1/chart/all/username/{username}",
             produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Price> allValues(@PathVariable String username) {
         return priceService.getFollowedPrices(username);

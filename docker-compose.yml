@@ -10,7 +10,7 @@ services:
       environment:
         MYSQL_ROOT_PASSWORD: password
       volumes:
-        - /Users/jfmorga/data/mysql:/var/lib/mysql
+        - /home/thorodinson32/data/mysql:/var/lib/mysql
       ports:
         - "3306:3306"
 

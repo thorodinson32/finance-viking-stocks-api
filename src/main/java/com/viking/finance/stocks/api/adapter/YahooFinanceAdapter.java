@@ -45,7 +45,7 @@ public class YahooFinanceAdapter {
     }
 
     @Scheduled(fixedRate = 60000)
-    @CacheEvict(value = "prices", allEntries=true)
+    @CacheEvict(value = "prices", allEntries = true)
     public void clearPricesCache() {
 
     }

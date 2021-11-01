@@ -4,7 +4,6 @@ import com.viking.finance.stocks.api.model.Follow;
 import com.viking.finance.stocks.api.model.FollowData;
 import com.viking.finance.stocks.api.repository.FollowingRepository;
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -30,7 +29,7 @@ public class FollowingService {
                     .equals(follow.getSymbol());
         }
 
-        if(!duplicate) {
+        if (!duplicate) {
             FollowData followData = new FollowData();
             followData.setSymbol(follow.getSymbol());
             followData.setUsername(follow.getUsername());

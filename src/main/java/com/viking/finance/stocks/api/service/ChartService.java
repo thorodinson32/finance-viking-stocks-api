@@ -1,18 +1,13 @@
 package com.viking.finance.stocks.api.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.viking.finance.stocks.api.adapter.YahooFinanceAdapter;
 import com.viking.finance.stocks.api.model.Follow;
 import com.viking.finance.stocks.api.model.Price;
 import com.viking.finance.stocks.api.model.yahoo.Chart;
 import com.viking.finance.stocks.api.model.yahoo.YahooResponse;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
